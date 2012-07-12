@@ -2,21 +2,24 @@
 {
     $.fn.tap = function(callback)
     {
-        var that = this;
+        this.each(function())
+        {
+            var $this = $(this);
 
-        this.bind('touchstart', function(e){
-            that.data('moved', false);
-        }).bind('touchmove', function(e){
-            that.data('moved', true);
-        }).bind('touchend', function(e){
-            if (that.data('moved') == false)
-            {
-                if (typeof callback == 'function') 
+            $this.bind('touchstart', function(e){
+                $this.data('moved', false);
+            }).bind('touchmove', function(e){
+                $this.data('moved', true);
+            }).bind('touchend', function(e){
+                if ($this.data('moved') == false)
                 {
-                    callback.call(this);
+                    if (typeof callback == 'function') 
+                    {
+                        callback.call($this);
+                    }
                 }
-            }
-        });
+            });
+        }
 
         return this;
     }
