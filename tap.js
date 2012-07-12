@@ -2,7 +2,7 @@
 {
     $.fn.tap = function(callback)
     {
-        this.each(function())
+        this.each(function()
         {
             var $this = $(this);
 
@@ -19,7 +19,7 @@
                     }
                 }
             });
-        }
+        });
 
         return this;
     }
